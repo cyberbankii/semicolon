@@ -1,0 +1,41 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="0.0.1-1 create user table" author="Theerasak Meebunrot">
+		<createTable tableName="s_user">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="varchar(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="device" type="varchar(50)" />
+		</createTable>
+	</changeSet>
+	<changeSet id="0.0.1-2 create current location table" author="Theerasak Meebunrot">
+		<createTable tableName="s_current_location">
+			<column name="user_id" type="int" />
+			<column name="latitude" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="longitude" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="create_time" type="DATETIME">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="0.0.1-3 add foreign key for user" author="Theerasak Meebunrot">
+		<addForeignKeyConstraint constraintName="fk_w_user"
+			baseTableName="s_current_location" baseColumnNames="user_id"
+			referencedTableName="s_user" referencedColumnNames="id" onDelete="SET NULL" />
+	</changeSet>
+</databaseChangeLog>

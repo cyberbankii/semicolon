@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class name="com.semicolon.infra.domain.user.internal.UserImpl"
+		table="s_user">
+		<id name="id" type="int" column="id">
+			<generator class="org.hibernate.id.IdentityGenerator" />
+		</id>
+		<property name="name" type="string" column="name" />
+		<property name="password" type="string" column="password" />
+		<property name="device" type="string" column="device" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+	<class
+		name="com.semicolon.infra.domain.current.location.internal.CurrentLocationImpl"
+		table="s_current_location">
+		<composite-id>
+			<key-property name="userId" type="integer" column="user_id" />
+			<key-property name="createTime" type="date" column="createTime" />
+		</composite-id>
+		<property name="latitude" type="double" column="latitude" />
+		<property name="longitude" type="double" column="longitude" />
+	</class>
+</hibernate-mapping>
